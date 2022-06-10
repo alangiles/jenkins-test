@@ -3,13 +3,12 @@ pipeline {
 //         dockerfile true
         docker {
             image 'amazoncorretto-gradle:11'
-            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/bin/docker'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
         stage('Test') {
             steps {
-                sh '/usr/bin/docker --version'
                 sh 'java --version'
                 sh 'gradle --version'
                 sh 'gradle test'
