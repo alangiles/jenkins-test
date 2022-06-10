@@ -11,7 +11,11 @@ pipeline {
             steps {
                 sh 'java --version'
                 sh 'gradle --version'
-                sh 'gradle test'
+                try {
+                    sh 'gradle clean test --no-daemon'
+                } finally {
+                    junit '**/build/test-results/test/*.xml'
+                }
             }
         }
         stage('Build') {
