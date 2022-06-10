@@ -1,11 +1,16 @@
 pipeline {
-    agent {
-        docker { image 'node:16.13.1-alpine' }
-    }
+    agent { dockerfile true }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'java --version'
+                sh 'gradle --version'
+                sh 'gradle test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'gradle clean build'
             }
         }
     }
