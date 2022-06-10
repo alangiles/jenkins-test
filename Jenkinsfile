@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'docker --version'
+                sh '/usr/bin/docker --version'
                 sh 'java --version'
                 sh 'gradle --version'
                 sh 'gradle test'
