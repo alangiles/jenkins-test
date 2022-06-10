@@ -1,6 +1,7 @@
 pipeline {
     agent {
         dockerfile {
+            additionalBuildArgs  '--tag amazoncorretto-gradle:11'
             args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -9,7 +10,7 @@ pipeline {
             steps {
                 sh 'java --version'
                 sh 'gradle --version'
-                sh 'gradle clean test --no-daemon'
+                sh 'gradle clean test'
             }
             post {
                 always {
