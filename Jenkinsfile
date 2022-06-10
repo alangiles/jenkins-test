@@ -1,5 +1,11 @@
 pipeline {
-    agent { dockerfile true }
+    agent {
+//         dockerfile true
+        docker {
+            image 'amazoncorretto-gradle:11'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
         stage('Test') {
             steps {
