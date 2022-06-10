@@ -3,9 +3,14 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'git --version'
-                sh 'curl --version'
+                sh 'java --version'
+                sh 'gradle --version'
+                sh 'gradle test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'gradle clean build'
             }
         }
     }
