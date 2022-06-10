@@ -3,7 +3,7 @@ pipeline {
 //         dockerfile true
         docker {
             image 'amazoncorretto-gradle:11'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
