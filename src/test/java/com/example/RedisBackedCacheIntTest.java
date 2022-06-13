@@ -1,5 +1,6 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
@@ -28,6 +29,12 @@ public class RedisBackedCacheIntTest {
 
         // Now we have an address and port for Redis, no matter where it is running
         underTest = new Jedis(address, port);
+    }
+
+    @AfterEach
+    public void tearDown(){
+        underTest.disconnect();
+        redis.stop();
     }
 
     @Test
