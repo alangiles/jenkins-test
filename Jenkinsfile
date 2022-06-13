@@ -8,19 +8,12 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'java --version'
-                sh 'gradle --version'
                 sh 'gradle clean test'
             }
             post {
                 always {
                     junit 'build/test-results/**/*.xml'
                 }
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'gradle clean build'
             }
         }
     }
