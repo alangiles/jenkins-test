@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             additionalBuildArgs  '--tag amazoncorretto-gradle:11'
-            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
         }
     }
     stages {
