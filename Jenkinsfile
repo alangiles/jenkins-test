@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'java --version'
                 sh 'gradle --version'
+                sh 'docker --version'
                 sh 'gradle clean test'
             }
             post {
